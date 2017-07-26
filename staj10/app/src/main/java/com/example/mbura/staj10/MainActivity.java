@@ -2,6 +2,7 @@ package com.example.mbura.staj10;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,8 +19,13 @@ public class MainActivity extends AppCompatActivity implements OnCheckChanged {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ListView yourListView = (ListView) findViewById(R.id.itemListView);
+//        txt = new TextView(this);
+       ListView yourListView = (ListView) findViewById(R.id.itemListView);
+//
+//        LinearLayout masterLayout = (LinearLayout) findViewById(R.id.masterLayout);
+//
+//        masterLayout.addView(txt);
+        txt=(TextView)findViewById(R.id.txtView);
 
         ArrayList<CitiyProperties> list = new ArrayList<>();
 
@@ -34,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnCheckChanged {
 
         yourListView.setAdapter(customAdapter);
 
-        ;
+
 
 
 

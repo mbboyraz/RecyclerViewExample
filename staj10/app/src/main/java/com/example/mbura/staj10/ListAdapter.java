@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,12 +34,12 @@ public class ListAdapter  extends ArrayAdapter<CitiyProperties> implements Compo
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-        onCheckChanged.onCheckChanged();
+        onCheckChanged.onCheckChanged((CitiyProperties) buttonView.getTag());
     }
 
     static class ViewHolder {
         protected TextView text;
-        protected CheckBox checkbox;
+        protected CheckBox checkBox;
     }
 
    @Override
@@ -53,26 +54,26 @@ public class ListAdapter  extends ArrayAdapter<CitiyProperties> implements Compo
             final ViewHolder viewHolder = new ViewHolder();
 
             viewHolder.text = (TextView) v.findViewById(R.id.categoryId);
-            viewHolder.checkbox = (CheckBox) v.findViewById(R.id.sec);
-            viewHolder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            viewHolder.checkBox = (CheckBox) v.findViewById(R.id.sec);
+            viewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView,
                                                      boolean isChecked) {
-                            CitiyProperties element = (CitiyProperties) viewHolder.checkbox.getTag();
-                            viewHolder.checkbox.setSelected(buttonView.isChecked());
+                            CitiyProperties element = (CitiyProperties) viewHolder.checkBox.getTag();
+                            viewHolder.checkBox.setSelected(buttonView.isChecked());
 
                         }
                     });
             v.setTag(viewHolder);
-            viewHolder.checkbox.setTag(list.get(position));
+            viewHolder.checkBox.setTag(list.get(position));
         } else {
             v = convertView;
-            ((ViewHolder) v.getTag()).checkbox.setTag(list.get(position));
+            ((ViewHolder) v.getTag()).checkBox.setTag(list.get(position));
         }
        ViewHolder holder = (ViewHolder) v.getTag();
        holder.text.setText(list.get(position).getCityName());
-       holder.checkbox.setChecked(list.get(position).equals(true));
+       holder.checkBox.setChecked(list.get(position).equals(true));
 
 
 
@@ -98,7 +99,7 @@ public class ListAdapter  extends ArrayAdapter<CitiyProperties> implements Compo
             }
         }
 
-        holder.checkbox.setOnCheckedChangeListener(this);
+        holder.checkBox.setOnCheckedChangeListener(this);
 
         return v;
     }

@@ -6,5 +6,5 @@ package com.example.mbura.staj10;
 
 public interface OnCheckChanged {
 
-    void onCheckChanged();
+    void onCheckChanged(CitiyProperties citiyProperties);
 }
